@@ -388,7 +388,7 @@
                                                         <label class="form-label">Description</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="message-circle" class="fea icon-sm icons"></i>
-                                                            <textarea name="comments" id="comments" rows="4" class="form-control ps-5" placeholder="Description :"></textarea>
+                                                            <input name="comments" id="comments" type="text" class="form-control ps-5" placeholder="Description :"></input>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -411,7 +411,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone No. :</label>
                                                     <div class="form-icon position-relative">
-                                                        <i data-feather="phone" class="fea icon-sm icons"></i>
+                                                        <i data-feather="smartphone" class="fea icon-sm icons"></i>
                                                         <input name="number" id="number" type="number" class="form-control ps-5" placeholder="Phone :">
                                                     </div>
                                                 </div>
@@ -419,16 +419,16 @@
 
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Website :</label>
+                                                    <label class="form-label">Home Number :</label>
                                                     <div class="form-icon position-relative">
-                                                        <i data-feather="globe" class="fea icon-sm icons"></i>
-                                                        <input name="url" id="url" type="url" class="form-control ps-5" placeholder="Url :">
+                                                        <i data-feather="phone-call" class="fea icon-sm icons"></i>
+                                                        <input name="Number" id="url" type="number" class="form-control ps-5" placeholder="Home Number :">
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
 
                                             <div class="col-lg-12 mt-2 mb-0">
-                                                <button class="btn btn-primary">Add</button>
+                                                <button class="btn btn-primary">Save Changes</button>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </form>
@@ -475,6 +475,46 @@
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </form>
+                                </div>                                
+                                <div class="card border-0 rounded shadow p-4 mt-4">
+                                    <h5 class="mb-0">Location Info :</h5>
+                                    <form>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Country :</label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="map" class="fea icon-sm icons"></i>
+                                                        <input type="text" class="form-control ps-5" placeholder="Select Country" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+        
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">City :</label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="map-pin" class="fea icon-sm icons"></i>
+                                                        <input type="text" class="form-control ps-5" placeholder="City" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+        
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Residence Address :</label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="home" class="fea icon-sm icons"></i>
+                                                        <input type="text" class="form-control ps-5" placeholder="Residence Address" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+        
+                                            <div class="col-lg-12 mt-2 mb-0">
+                                                <button class="btn btn-primary">Save Changes</button>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
+                                    </form>
                                 </div>
 
                                 <div class="card border-0 rounded shadow p-4 mt-4">
@@ -513,37 +553,47 @@
                                 </div>
                             </div><!--end col-->
 
-                            <div class="col-lg-4 mt-4">        
-                                <div class="card border-0 rounded shadow p-4">
-                                    <h5 class="mb-0">Marketing Notifications :</h5>
-        
+                            <div class="col-lg-4 ">        
+
+                                <div class="card border-0 rounded shadow p-4 mt-4">
+                                    <h5 class="mb-0">Update Verification </h5>
+
                                     <div class="mt-4">
-                                        <div class="d-flex justify-content-between pb-4">
-                                            <h6 class="mb-0">There is a sale or promotion</h6>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="noti5">
-                                                <label class="form-check-label" for="noti5"></label>
+                                        <div class="d-flex align-items-center">
+                                            <img src="assets/images/account.png" class="avatar avatar-small rounded" style="width: auto;" alt="">
+                                            <div class="flex-1 ms-3">
+                                                <a href="agency-blog-detail.html" class="d-block widget-post-title text-dark">Account</a>
+                                                <span class="text-muted">16th August 2021</span>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between py-4 border-top">
-                                            <h6 class="mb-0">Company news</h6>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="noti6">
-                                                <label class="form-check-label" for="noti6"></label>
+    
+                                        <div class="d-flex align-items-center mt-3">
+                                            <img src="assets/images/residence.png" class="avatar avatar-small rounded" style="width: auto;" alt="">
+                                            <div class="flex-1 ms-3">
+                                                <a href="agency-blog-detail.html" class="d-block widget-post-title text-dark">Residence Bill</a>
+                                                <span class="text-muted">16th August 2021</span>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between py-4 border-top">
-                                            <h6 class="mb-0">Weekly jobs</h6>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" checked id="noti7">
-                                                <label class="form-check-label" for="noti7"></label>
+                                        
+                                        <div class="d-flex align-items-center mt-3">
+                                            <img src="assets/images/communication.png" class="avatar avatar-small rounded" style="width: auto;" alt="">
+                                            <div class="flex-1 ms-3">
+                                                <a href="agency-blog-detail.html" class="d-block widget-post-title text-dark">Look On The Glorious Balance</a>
+                                                <span class="text-muted">16th August 2021</span>
                                             </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between py-4 border-top">
-                                            <h6 class="mb-0">Unsubscribe News</h6>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" checked id="noti8">
-                                                <label class="form-check-label" for="noti8"></label>
+                                        </div>                                        
+                                        <div class="d-flex align-items-center mt-3">
+                                            <img src="assets/images/account.png" class="avatar avatar-small rounded" style="width: auto;" alt="">
+                                            <div class="flex-1 ms-3">
+                                                <a href="agency-blog-detail.html" class="d-block widget-post-title text-dark">Look On The Glorious Balance</a>
+                                                <span class="text-muted">16th August 2021</span>
+                                            </div>
+                                        </div>                                        
+                                        <div class="d-flex align-items-center mt-3">
+                                            <img src="assets/images/transactions.png" class="avatar avatar-small rounded" style="width: auto;" alt="">
+                                            <div class="flex-1 ms-3">
+                                                <a href="agency-blog-detail.html" class="d-block widget-post-title text-dark">Look On The Glorious Balance</a>
+                                                <span class="text-muted">16th August 2021</span>
                                             </div>
                                         </div>
                                     </div>
