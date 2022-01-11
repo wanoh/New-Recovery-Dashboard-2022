@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Landrick - Calendar</title>
+        <title>Landrick - Gallery One</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
         <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />
@@ -18,8 +18,8 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- simplebar -->
         <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
-        <!-- Calendar -->
-        <link href="assets/css/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- Lightbox -->
+        <link href="assets/css/tobii.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->
         <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/tabler-icons.min.css" rel="stylesheet" type="text/css" />
@@ -87,16 +87,65 @@
                                 </ul>
                             </div>
                         </li>
-
- 
                         <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="ti ti-mail-opened me-2"></i>Transactions</a>
+                            <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Blog</a>
                             <div class="sidebar-submenu">
                                 <ul>
-                                    <li><a href="deposit-transactions.html">Deposits</a></li>
-                                    <li><a href="withdrawal-transactions.html">Withdrawals</a></li>
-                                    <li><a href="email-alert.html"></a></li>
+                                    <li><a href="blog.html">Blogs</a></li>
+                                    <li><a href="blog-detail.html">Blog Detail</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)"><i class="ti ti-shopping-cart me-2"></i>E-Commerce</a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="product-detail.html">Shop Detail</a></li>
+                                    <li><a href="shop-cart.html">Shopcart</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)"><i class="ti ti-camera me-2"></i>Gallery</a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="gallery-one.html">Gallary One</a></li>
+                                    <li><a href="gallery-two.html">Gallery Two</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)"><i class="ti ti-file-info me-2"></i>Pages</a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="faqs.html">FAQs</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                    <li><a href="blank-page.html">Blank Page</a></li>
+                                    <li><a href="components.html">Components</a></li>
+                                    <li><a href="privacy.html">Privacy Policy</a></li>
+                                    <li><a href="terms.html">Term & Condition</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)"><i class="ti ti-mail-opened me-2"></i>Email Template</a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="email-confirmation.html">Confirmation</a></li>
+                                    <li><a href="email-password-reset.html">Reset Password</a></li>
+                                    <li><a href="email-alert.html">Alert</a></li>
                                     <li><a href="email-invoice.html">Invoice</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)"><i class="ti ti-file-invoice me-2"></i>Invoice</a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="invoice-list.html">Invoice List</a></li>
+                                    <li><a href="invoice.html">Invoice Preview</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -115,21 +164,13 @@
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="ti ti-license me-2"></i>Withdrawals</a>
+                            <a href="javascript:void(0)"><i class="ti ti-license me-2"></i>Miscellaneous</a>
                             <div class="sidebar-submenu">
                                 <ul>
-                                    <li><a href="bank-withdraw.html">Bank Withdrawal</a></li>
-                                    <li><a href="crypto-withdrawal.html">Crypto Withdrawal</a></li>
-
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="ti ti-license me-2"></i>Deposits</a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li><a href="bank-deposit.html">Bank Deposit</a></li>
-                                    <li><a href="crypto-deposit.html">Crypto Deposit</a></li>
+                                    <li><a href="comingsoon.html">Comingsoon</a></li>
+                                    <li><a href="maintenance.html">Maintenance</a></li>
+                                    <li><a href="error.html">Error</a></li>
+                                    <li><a href="thankyou.html">Thank You</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -280,55 +321,103 @@
                 <div class="container-fluid">
                     <div class="layout-specing">
                         <div class="d-md-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Chatbox</h5>
+                            <h5 class="mb-0">Gallery</h5>
 
                             <nav aria-label="breadcrumb" class="d-inline-block mt-2 mt-sm-0">
                                 <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
                                     <li class="breadcrumb-item text-capitalize"><a href="index.html">Landrick</a></li>
-                                    <li class="breadcrumb-item text-capitalize"><a href="#">Apps</a></li>
-                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">Chat</li>
+                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">Gallary</li>
                                 </ul>
                             </nav>
                         </div>
                     
-                        <div class="row g-2">
-                            <div class="col-xl-2 col-lg-4 col-12 mt-4">
-                                <div id="external-events">
-                                    <div class="card border-0 p-4 shadow rounded">
-                                        <span class="h6">All Events</span>
-                                    
-                                        <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
-                                            <div class="fc-event-main">Metting</div>
-                                        </div>
-                                        <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
-                                            <div class="fc-event-main">Operations</div>
-                                        </div>
-                                        <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
-                                            <div class="fc-event-main">Lunch</div>
-                                        </div>
-                                        <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
-                                            <div class="fc-event-main">Conference</div>
-                                        </div>
-                                        <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
-                                            <div class="fc-event-main">Business Metting</div>
-                                        </div>
-                                    
-                                        <div class="mt-2">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="drop-remove">
-                                                <label class="form-check-label" for="drop-remove">Remove after drop</label>
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="bg-primary card border-0 shadow rounded overflow-hidden p-4" style="background: url('assets/images/account/bg.png') center;">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6 col-sm-8">
+                                            <div class="text-center  p-4 rounded" style="height: 100px;">
+                                                
+
+
+                                               
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div><!--end col-->
+                        </div><!--end row-->
+
+                        <div class="row justify-content-center">
                             
-                            <div class="col-xl-10 col-lg-8 col-12 mt-4">
-                                <div id="calendar-container" class="card rounded border-0 shadow p-4">
-                                    <div id="calendar"></div>
+                            
+                            <div class="col-md-7 col-lg-8 mt-4">
+                                <div class="card rounded shadow p-4 border-0">
+                                    <h4 class="mb-3">Crypto Transfer</h4>
+                                    <form class="needs-validation" novalidate>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label for="withBankAmount" class="form-label">Withdrawal Amount</label>
+                                                <div class="input-group has-validation">
+                                                    <span class="input-group-text bg-light text-muted border">€</span>
+                                                    <input type="text" class="form-control" id="withBankAmount" placeholder="withBankAmount" required>
+                                                    <div class="invalid-feedback"> Your username is required. </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="cryptWithAddress" class="form-label">Wallet Address</label>
+                                                <input type="text" class="form-control" id="cryptWithAddress" placeholder="1234 4567 87654"
+                                                    required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your shipping address.
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="wallet-name" class="form-label">Wallet Name</label>
+                                                <input type="text" class="form-control" id="swiftCode" placeholder="Wallet Name" required>
+                                                <div class="invalid-feedback">
+                                                    Swift code required.
+                                                </div>
+                                            </div> 
+        
+                                            <div class="col-md-6">
+                                                <label for="country" class="form-label">Protocol</label>
+                                                <select class="form-select form-control" id="country" required>
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select a valid country.
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+        
+        
+                                        <h4 class="mb-3 mt-4 pt-4 border-top">Account Type</h4>
+        
+                                        <div class="my-3">
+                                            <div class="form-check">
+                                                <input id="credit" name="trading-account" type="radio" class="form-check-input"
+                                                    checked required>
+                                                <label class="form-check-label" for="credit">Trading Account</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input id="debit" name="spot-account" type="radio" class="form-check-input"
+                                                    required>
+                                                <label class="form-check-label" for="debit">Spot Acoount</label>
+                                            </div>
+                                        </div>
+
+        
+                                        <button class="w-100 btn btn-primary" type="submit">Continue to Withdraw</button>
+                                    </form>
                                 </div>
                             </div><!--end col-->
                         </div><!--end row-->
+        
                     </div>
                 </div><!--end container-->
 
@@ -399,11 +488,10 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
         <script src="assets/js/simplebar.min.js"></script>
-        <!-- Calendar -->
-        <script src="assets/js/fullcalendar.min.js"></script>
-        <script src="assets/js/fullcalendar.init.js"></script>
         <!-- Icons -->
         <script src="assets/js/feather.min.js"></script>
+        <!-- Lightbox -->
+        <script src="assets/js/tobii.min.js"></script>
         <!-- Main Js -->
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
