@@ -360,13 +360,13 @@
                                                 <label for="withBankAmount" class="form-label">Withdrawal Amount</label>
                                                 <div class="input-group has-validation">
                                                     <span class="input-group-text bg-light text-muted border">€</span>
-                                                    <input type="text" class="form-control" id="withBankAmount" placeholder="withBankAmount" required>
+                                                    <input type="text" class="form-control" id="withBankAmount" placeholder="Withdrawal Amount" required>
                                                     <div class="invalid-feedback"> Your username is required. </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <label for="cryptWithAddress" class="form-label">Wallet Address</label>
-                                                <input type="text" class="form-control" id="cryptWithAddress" placeholder="1234 4567 87654"
+                                                <input type="text" class="form-control" id="cryptWithAddress" placeholder="Enter Receiving Wallet Address"
                                                     required>
                                                 <div class="invalid-feedback">
                                                     Please enter your shipping address.
@@ -385,8 +385,11 @@
                                                 <label for="country" class="form-label">Protocol</label>
                                                 <select class="form-select form-control" id="country" required>
                                                     <option value="">Choose...</option>
-                                                    <option>United States</option>
-                                                </select>
+                                                    <option>Binance Chain(BEP2)</option>
+                                                    <option>Binance Smart Chain(BEP20)</option>
+                                                    <option>Ethereum (ERC20)</option>
+                                                    <option>Solana</option>
+                                                    <option>Tron</option>                                                </select>
                                                 <div class="invalid-feedback">
                                                     Please select a valid country.
                                                 </div>
@@ -396,7 +399,7 @@
 
         
         
-                                        <h4 class="mb-3 mt-4 pt-4 border-top">Account Type</h4>
+                                        <h4 class="mb-3 mt-4 pt-4 border-top">Destination Account Type</h4>
         
                                         <div class="my-3">
                                             <div class="form-check">

@@ -360,16 +360,20 @@
                                                 <label for="withBankAmount" class="form-label">Deposit Amount</label>
                                                 <div class="input-group has-validation">
                                                     <span class="input-group-text bg-light text-muted border">€</span>
-                                                    <input type="text" class="form-control" id="cryptoDepAmount" placeholder="withBankAmount" required>
+                                                    <input type="text" class="form-control" id="cryptoDepAmount" placeholder="Deposit Amount" required>
                                                     <div class="invalid-feedback"> Your username is required. </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="country" class="form-label">Protocol</label>
-                                                <select class="form-select form-control" id="country" required>
+                                                <label for="country" class="form-label">Select Coin</label>
+                                                <select class="form-select form-control" id="depositCoin" required>
                                                     <option value="">Choose...</option>
-                                                    <option>United States</option>
+                                                    <option>Bitcoin(BTC)</option>
+                                                    <option>Ethereum(ETH)</option>
+                                                    <option>Binance(BNB)</option>
+                                                    <option>Solana(Sol)</option>
+                                                    <option>USDT(Tether)</option>
                                                 </select>
                                                 <div class="invalid-feedback">
                                                     Please select a valid country.
@@ -377,22 +381,24 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="country" class="form-label">Protocol</label>
-                                                <select class="form-select form-control" id="country" required>
+                                                <select class="form-select form-control" id="depositProtocol" required>
                                                     <option value="">Choose...</option>
-                                                    <option>United States</option>
+                                                    <option>Binance Chain(BEP2)</option>
+                                                    <option>Binance Smart Chain(BEP20)</option>
+                                                    <option>Ethereum (ERC20)</option>
+                                                    <option>Solana</option>
+                                                    <option>Tron</option>
                                                 </select>
                                                 <div class="invalid-feedback">
                                                     Please select a valid country.
                                                 </div>
-                                            </div>
- 
-        
+                                            </div>     
 
                                         </div>
 
         
         
-                                        <h4 class="mb-3 mt-4 pt-4 border-top">Account Type</h4>
+                                        <h4 class="mb-3 mt-4 pt-4 border-top">Deposit Account Type</h4>
         
                                         <div class="my-3">
                                             <div class="form-check">
