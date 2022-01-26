@@ -1,5 +1,7 @@
 'use srtict';
 
+console.log("js page loaded")
+
 
 var setListener = (element, type, handler) => {
     if (!element) {
@@ -17,10 +19,11 @@ const user = firebase.auth().currentUser;
 
 
 //REGISTRATION FORM AND ELEMEENT SELECTORS
-const usernameEl = document.querySelector('#user-name');
+const firstNameEl = document.querySelector('#register-first-name');
+const lastNameEl = document.querySelector('#register-last-name');
 const emailEl = document.querySelector('#register-email');
 const passwordEl = document.querySelector('#register-password');
-const confirmPasswordEl = document.querySelector('#register-password-confirm');
+const confirmPasswordEl = document.querySelector('#confirm-register-password');
 //const companyNameEl = document.querySelector('#company-name');
 
 const form = document.querySelector('#register-form');
@@ -43,21 +46,38 @@ const showElement = (el) => {
   };
 
 
-const checkUsername = () => {
+  const checkFirstname = () => {
     let valid = false;
     const min = 3,
         max = 25;
-    const username = usernameEl.value.trim();
+    const username = firstNameEl.value.trim();
     if (!isRequired(username)) {
-        showError(usernameEl, 'Username cannot be blank.');
+        showError(firstNameEl, 'Username cannot be blank.');
     } else if (!isBetween(username.length, min, max)) {
-        showError(usernameEl, `Username must be between ${min} and ${max} characters.`)
+        showError(firstNameEl, `Username must be between ${min} and ${max} characters.`)
     } else {
-        showSuccess(usernameEl);
+        showSuccess(firstNameEl);
         valid = true;
     }
     return valid;
 };
+
+const checkLastname = () => {
+    let valid = false;
+    const min = 3,
+        max = 25;
+    const username = lastNameEl.value.trim();
+    if (!isRequired(username)) {
+        showError(lastNameEl, 'Username cannot be blank.');
+    } else if (!isBetween(username.length, min, max)) {
+        showError(lastNameEl, `Username must be between ${min} and ${max} characters.`)
+    } else {
+        showSuccess(lastNameEl);
+        valid = true;
+    }
+    return valid;
+};
+
 
     const checkEmail = () => {
     let valid = false;
@@ -151,4 +171,144 @@ const showSuccess = (input) => {
     formSibling.textContent = '';
 }
 
+setListener(form,'submit', function (e) {
+    // prevent the form from submitting
+    e.preventDefault();
+  
+    // validate fields
+    let isFirstNameValid  = checkFirstname(),
+        isLastNameValid = checkLastname(),
+        isEmailValid = checkEmail(),
+        isPasswordValid = checkPassword(),
+        isConfirmPasswordValid = checkConfirmPassword();
+  
+    let isFormValid = 
+        isFirstNameValid && 
+        isLastNameValid &&
+        isEmailValid &&
+        isPasswordValid &&
+        isConfirmPasswordValid;
+  
+    // submit to the server if the form is valid
+    if (isFormValid) {
+          // get user info
+    const registerEmail = document.querySelector('#register-email').value;
+    const registerPassword = document.querySelector('#register-password').value;
+    //const registerFullName = document.querySelector('#userName').value;
+  
+  
+   // sign up the user
+    
+      auth.createUserWithEmailAndPassword(registerEmail, registerPassword).then((userCredential) => {
+        console.log(userCredential.uid);
 
+        const User = firebase.auth().currentUser;
+        
+        let userProfileRef = db.collection("userProfile");
+        let usersDeposits = db.collection("depositTransactions");
+        let usersWithdrawals = db.collection("withdrawalTransactions");
+        let usersIncomingTransactions = db.collection("incomingTransaction");
+        
+       console.log('user created', userCredential.user);
+       userProfileRef.doc(userCredential.uid).set({
+           name : "wan",
+       });
+       usersDeposits.doc(userCredential.uid).set({
+        name : "wan",
+    }) .then(()=>{
+           console.log("doc written")
+       })
+       form.reset()
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage,errorCode)
+
+    });
+      
+    }
+  
+  });
+
+
+
+
+      //Login 
+
+      const loginEmailEl = document.querySelector('#login-email');
+      const loginPasswordEl = document.querySelector('#login-password');
+  
+      const loginForm = document.querySelector('#login-form');
+  
+  
+      const logCheckEmail = () => {
+      let valid = false;
+      const logEmail = loginEmailEl.value.trim();
+      if (!isRequired(logEmail)) {
+          showError(loginEmailEl, 'Email cannot be blank.');
+      } else if (!isEmailValid(logEmail)) {
+          showError(loginEmailEl, 'Email is not valid.')
+      } else {
+          showSuccess(loginEmailEl);
+          valid = true;
+      }
+      return valid;
+    };
+  
+    const logCheckPassword = () => {
+      let valid = false;  
+      const logPassword = loginPasswordEl.value.trim();  
+      if (!isRequired(logPassword)) {
+          showError(loginPasswordEl, 'Password cannot be blank.');
+      } else if (!isPasswordSecure(logPassword)) {
+          showError(loginPasswordEl, 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)');
+      } else {
+          showSuccess(loginPasswordEl);
+          valid = true;
+      }  
+      return valid;
+    };  
+    
+
+  setListener(loginForm, 'submit', (e) => {
+    // prevent the form from submitting
+   e.preventDefault();
+ 
+    // validate fields
+   let  isLogEmailValid = logCheckEmail(),
+       isLogPasswordValid = logCheckPassword();
+       
+
+   let isFormValid = isLogEmailValid &&
+       isLogPasswordValid;
+
+    // submit to the server if the form is valid
+   if (isFormValid) {
+   // get user info from webpage and Dom
+   const email = document.getElementById('login-email').value;
+   const password = document.getElementById('login-password').value;
+   const noUser = document.getElementById('noUser');
+   console.log(email, password);
+ 
+   // log the user in
+   
+   auth.signInWithEmailAndPassword(email, password).then((cred) => {
+     console.log(cred.user);
+     // close the signup modal & reset form
+     // const modal = document.querySelector('#modal-login');
+     //.Modal.getInstance(modal).close();
+     window.location.href = "index.html";
+ 
+     loginForm.reset();
+     
+   }).catch((error) => {
+     var errorCode = error.code;
+     var errorMessage = error.message;
+     console.log(errorCode,errorMessage);
+     noUser.classList.remove('d-none');
+     noUser.classList.add('d-block');
+   });
+   
+ }
+ });

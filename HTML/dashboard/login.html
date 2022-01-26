@@ -46,17 +46,19 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-signin p-4 bg-white rounded shadow">
-                            <form>
+                            <form id="login-form" >
                                 <a href="index.html"><img src="assets/images/logo-icon.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
                                 <h5 class="mb-3 text-center">Please sign in</h5>
                             
                                 <div class="form-floating mb-2">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">Email address</label>
+                                    <input type="email" class="form-control" id="login-email" placeholder="name@example.com">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="login-email">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword">Password</label>
+                                    <input type="password" class="form-control" id="login-password" placeholder="Password">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="login-password">Password</label>
                                 </div>
                             
                                 <div class="d-flex justify-content-between">
@@ -83,6 +85,48 @@
             </div> <!--end container-->
         </section><!--end section-->
         <!-- Hero End -->
+
+
+
+        
+        <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+
+
+
+
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+            // Your web app's Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCV2zCa47JimWQTnCXzPbO5XzGvB1K6SnI",
+                    authDomain: "recovery-new-office.firebaseapp.com",
+                    databaseURL: "https://recovery-new-office-default-rtdb.firebaseio.com",
+                    projectId: "recovery-new-office",
+                    storageBucket: "recovery-new-office.appspot.com",
+                    messagingSenderId: "500692325150",
+                    appId: "1:500692325150:web:1c291a884626ee63c56f0f"
+                    };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+                // make auth and firestore refrences
+        
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+                const storage = firebase.storage();
+
+            
+        </script>
+
         
         <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -93,6 +137,8 @@
         <!-- Main Js -->
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
+        <!--Authentication-->
+        <script src="assets/app script/auth.js" ></script>
         
     </body>
 

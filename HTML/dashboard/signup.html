@@ -46,27 +46,45 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-signin p-4 bg-white rounded shadow">
-                            <form>
+                            <form id="register-form">
                                 <a href="index.html"><img src="assets/images/logo-icon.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
                                 <h5 class="mb-3 text-center">Register your account</h5>
                             
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Harry">
-                                    <label for="floatingInput">First Name</label>
+                                    <input type="text" class="form-control" id="register-first-name" placeholder="First Name">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="register-first-name">First Name</label>
                                 </div>
-
                                 <div class="form-floating mb-2">
-                                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-                                    <label for="floatingEmail">Email Address</label>
+                                    <input type="text" class="form-control" id="register-last-name" placeholder="Last Name">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="register-last-name">Last Name</label>                  
+                                </div>
+                                
+                                <div class="form-floating mb-2">
+                                    <input type="email" class="form-control" id="register-email" placeholder="email@example.com">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="register-email">Email Address</label>
+                                </div>
+                                <div class="form-floating mb-2">
+                                    <input type="number" class="form-control" id="register-phone" placeholder="Phone Number">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="floatingEmail">Phone Number</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <input type="password" class="form-control" id="register-password" placeholder="Password">
+                                    <small class="text-danger" id=errorMessage></small>
                                     <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="confirm-register-password" placeholder="Confirm Password">
+                                    <small class="text-danger" id=errorMessage></small>
+                                    <label for="confirm-register-password">Confirm Password</label>
                                 </div>
                             
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                                     <label class="form-check-label" for="flexCheckDefault">I Accept <a href="#" class="text-primary">Terms And Condition</a></label>
                                 </div>
                 
@@ -84,6 +102,47 @@
             </div> <!--end container-->
         </section><!--end section-->
         <!-- Hero End -->
+
+
+
+        <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+
+
+
+
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+            // Your web app's Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCV2zCa47JimWQTnCXzPbO5XzGvB1K6SnI",
+                    authDomain: "recovery-new-office.firebaseapp.com",
+                    databaseURL: "https://recovery-new-office-default-rtdb.firebaseio.com",
+                    projectId: "recovery-new-office",
+                    storageBucket: "recovery-new-office.appspot.com",
+                    messagingSenderId: "500692325150",
+                    appId: "1:500692325150:web:1c291a884626ee63c56f0f"
+                    };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+                // make auth and firestore refrences
+        
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+                const storage = firebase.storage();
+
+            
+        </script>
+
         
         <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -94,6 +153,8 @@
         <!-- Main Js -->
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
+        <!--Authentication-->
+        <script src="assets/app script/auth.js" ></script>
         
     </body>
 
