@@ -194,8 +194,6 @@ setListener(form,'submit', function (e) {
           // get user info
     const registerEmail = document.querySelector('#register-email').value;
     const registerPassword = document.querySelector('#register-password').value;
-    //const registerFullName = document.querySelector('#userName').value;
-  
   
    // sign up the user
     
@@ -209,26 +207,26 @@ setListener(form,'submit', function (e) {
         let usersWithdrawals = db.collection("withdrawalTransactions");
         let usersIncomingTransactions = db.collection("incomingTransaction");
         
-       console.log('user created', userCredential.user);
-       userProfileRef.doc(userCredential.uid).set({
+       console.log('user created', userCredential.user,User.uid);
+       userProfileRef.doc(User.uid).set({
            name : "wan",
        });
-       usersDeposits.doc(userCredential.uid).set({
-        name : "wan",
+       usersDeposits.doc(User.uid).set({
+        name : "wandep",
     }) .then(()=>{
            console.log("doc written")
+           Swal.fire('Any fool can use a computer')
+           window.location.href = "index.html";
+           form.reset()
        })
-       form.reset()
       }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage,errorCode)
 
-    });
-      
-    }
-  
+    });      
+    }  
   });
 
 
@@ -293,22 +291,67 @@ setListener(form,'submit', function (e) {
  
    // log the user in
    
-   auth.signInWithEmailAndPassword(email, password).then((cred) => {
+   auth.signInWithEmailAndPassword(email, password)
+   .then((cred) => {
      console.log(cred.user);
-     // close the signup modal & reset form
-     // const modal = document.querySelector('#modal-login');
-     //.Modal.getInstance(modal).close();
+
+     Swal.fire('Any fool can use a computer')
      window.location.href = "index.html";
- 
-     loginForm.reset();
-     
-   }).catch((error) => {
+     loginForm.reset();     
+   })
+   .catch((error) => {
      var errorCode = error.code;
      var errorMessage = error.message;
      console.log(errorCode,errorMessage);
      noUser.classList.remove('d-none');
      noUser.classList.add('d-block');
-   });
-   
+       });   
  }
  });
+
+
+ auth.onAuthStateChanged((user) => {
+     
+
+    if (user) {
+        console.log(user.uid, " user is signed in")
+    }
+    else{
+        console.log("no user ")
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //logout
+
+   const logout = document.querySelector('#logout');
+
+   setListener(logout, 'click', (e) => {
+     e.preventDefault();
+     auth.signOut().then(() => {
+       console.log('user signed out');
+       window.location.replace('login.html');
+     });
+   });
+   
