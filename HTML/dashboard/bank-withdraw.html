@@ -640,6 +640,45 @@
             </div>
         </div>
         <!-- Offcanvas End -->
+
+                <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+
+
+
+
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+            // Your web app's Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCV2zCa47JimWQTnCXzPbO5XzGvB1K6SnI",
+                    authDomain: "recovery-new-office.firebaseapp.com",
+                    databaseURL: "https://recovery-new-office-default-rtdb.firebaseio.com",
+                    projectId: "recovery-new-office",
+                    storageBucket: "recovery-new-office.appspot.com",
+                    messagingSenderId: "500692325150",
+                    appId: "1:500692325150:web:1c291a884626ee63c56f0f"
+                    };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+                // make auth and firestore refrences
+        
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+                const storage = firebase.storage();
+
+            
+        </script>
+
         
         <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>

@@ -206,14 +206,94 @@ setListener(form,'submit', function (e) {
         let usersDeposits = db.collection("depositTransactions");
         let usersWithdrawals = db.collection("withdrawalTransactions");
         let usersIncomingTransactions = db.collection("incomingTransaction");
+        let userActivity = db.collection("UserActivity")
+
+        let user_Profile = {
+            account_ID : "please provide",              
+            account: "Recovery",
+            fullName: "registerFullName",
+            email: "registerEmail",
+            password : "password",
+            firstName: "Please Provide",
+            lastName : "Please Provide",
+            address :"Please Provide",
+            city : "Please Provide",
+            country : "Please Provide",
+            phone : "Please Provide",
+            lastLogin : "lastlogintime",
+
+            //userPotential: Number , // 1 = not interested , 2 = needs more time, 3 = potential, 4 = high potential, 5 = FTD, 6 = taxcode , 7 = second Deposit , 8 = second deposit , 9 = burn
+            joinDate: "provide",
+            taxIdNumber :"provide",
+            taxIdStatus :false,
+            emailVerified : false,
+            assignedAgent : "provide",
+            //PROOF OF DOCUMENTATION VERIFICATION 
+
+            POI : false,  //Proof Of Identification
+            POL : false,  //Proof Of Location
+            POC : false,  //Proof Of Communication
+            POT : false,  //Proof Of Transactions
+          }
+
+        let depositTransactions = {
+           0 : { "databaseID" :'1',
+              "userID" : "firebase UID",
+              "transactionID" : "",
+              "transactionNo" : "",
+              "transactionTime" : "",
+              "depositOrigin" : "",
+              "depositDate" : "",
+              "amount" : "€ 00.00",
+              "type" : "",
+              "status" : "",
+              "statusType" : "",
+
+        }
+       };
+        
+        let withdrawalTransactions = { // should have three nested array of objects 1. withdrawa, 2. withdrawal request, 3. all editable info about withdrawal section 
+           0:{ "userID":"",
+            "transactionID" : "",
+            "transactionNo." :"",
+            "transactionTime" : "",
+            "withdrawalOrigin" : "",//user or Admin
+            "withdrawalDate" : "",
+            "amount" : "€ 00.00",
+            "type" : "",
+            "status" : "",
+            "statusType": "" ,},
+        };
+         
+        let incomingTransaction = {
+           0:  {
+            "userID":"",
+            "transactionID" : "",
+            "transactionNo." :"",
+            "transactionTime" : "",
+            "incoOrigin" : "",                
+            "amount" : "€ 00.00",                
+            "progress" : "",
+            "incDepoId" : "",
+            "incoDepoDate":"",
+              },
+      }
+      let user_Activity = {
+          0: {
+            actName: "",
+            actTime : "",
+            actExecutor: "",  
+          }
+      }
         
        console.log('user created', userCredential.user,User.uid);
-       userProfileRef.doc(User.uid).set({
-           name : "wan",
-       });
-       usersDeposits.doc(User.uid).set({
-        name : "wandep",
-    }) .then(()=>{
+       userProfileRef.doc(User.uid).set(user_Profile);
+       usersDeposits.doc(User.uid).set(depositTransactions);
+       usersWithdrawals.doc(User.uid).set(withdrawalTransactions);
+       usersIncomingTransactions.doc(User.uid).set(incomingTransaction);
+       userActivity.doc(User.uid).set(user_Activity)      
+       
+       .then(()=>{
            console.log("doc written")
            Swal.fire('Any fool can use a computer')
            window.location.href = "index.html";
@@ -345,13 +425,13 @@ setListener(form,'submit', function (e) {
 
    //logout
 
-   const logout = document.querySelector('#logout');
+//    const logout = document.getElementsByClassName('logout');
 
-   setListener(logout, 'click', (e) => {
-     e.preventDefault();
-     auth.signOut().then(() => {
-       console.log('user signed out');
-       window.location.replace('login.html');
-     });
-   });
+//    setListener(logout, 'click', (e) => {
+//      e.preventDefault();
+//      auth.signOut().then(() => {
+//        console.log('user signed out');
+//        window.location.replace('login.html');
+//      });
+//    });
    
