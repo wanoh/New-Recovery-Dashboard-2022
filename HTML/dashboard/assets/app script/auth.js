@@ -293,11 +293,14 @@ setListener(form,'submit', function (e) {
        usersIncomingTransactions.doc(User.uid).set(incomingTransaction);
        userActivity.doc(User.uid).set(user_Activity)      
        
-       .then(()=>{
-           console.log("doc written")
+       .then(()=> {
            Swal.fire('Any fool can use a computer')
            window.location.href = "index.html";
            form.reset()
+       }).then(()=> {
+           User.sendEmailVerification()
+       }).then(()=>{
+           console.log("email verification sent")
        })
       }).catch((error) => {
         // Handle Errors here.
