@@ -255,7 +255,7 @@
                 <div class="container-fluid">
                     <div class="layout-specing">
                         <div class="d-md-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Bank Deposit</h5>
+                            <h5 class="mb-0">Bank Withdraw </h5>
 
                             <nav aria-label="breadcrumb" class="d-inline-block mt-2 mt-sm-0">
                                 <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -288,32 +288,32 @@
                             <div class="col-md-7 col-lg-8 mt-4">
                                 <div class="card rounded shadow p-4 border-0">
                                     <h4 class="mb-3">Swift Bank Transfer</h4>
-                                    <form class="row g-3" id="withdrawalForm">
+                                    <form class="row g-3" id="bankWithdrawalForm">
                                         <div class="col-md-12">
                                           <label for="validationDefault01" class="form-label">Transaction Amount (€)</label>
-                                          <input type="text" class="form-control" id="withBankAmount" name="withBankAmount" placeholder="Enter full amount ...€00.00" required>
+                                          <input type="text" class="form-control" id="bankWithAmount" name="bankWithAmount" placeholder="Enter full amount ...€00.00" required>
                                         </div>
                                         <div class="col-md-4">
                                           <label for="validationDefault01" class="form-label">Account Holder's Name</label>
-                                          <input type="text" class="form-control" id="withAccountName" name="accountName" placeholder="Enter Full Name" required>
+                                          <input type="text" class="form-control" id="bankWithAccHolName" name="bankWithAccHolName" placeholder="Enter Full Name" required>
                                         </div>
                                         <div class="col-md-4">
                                           <label for="validationDefault02" class="form-label">Account Number</label>
-                                          <input type="text" class="form-control" id="withAccountNumber" name="accountNumber" placeholder="Enter Account Number" required>
+                                          <input type="text" class="form-control" id="bankWithAccNumber" name="bankWithAccNumber" placeholder="Enter Account Number" required>
                                         </div>
                                         <div class="col-md-4">
                                           <label for="validationDefaultUsername" class="form-label">IBAN Number</label>
                                           <div class="input-group">
-                                            <input type="text" class="form-control" id="withIbanNumber" name="ibanNumber" placeholder="Enter IBAN Number"  aria-describedby="inputGroupPrepend2" required>
+                                            <input type="text" class="form-control" id="bankWithIbanNumber" name="bankWithIbanNumber" placeholder="Enter IBAN Number"  aria-describedby="inputGroupPrepend2" required>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
                                           <label for="validationDefault03" class="form-label">Bank Name</label>
-                                          <input type="text" class="form-control" id="withBankName" name="bankName" placeholder="Enter Receiving Bank Name" required>
+                                          <input type="text" class="form-control" id="bankWithBankName" name="bankWithBankName" placeholder="Enter Receiving Bank Name" required>
                                         </div>
                                         <div class="col-md-3">
                                           <label for="validationDefault04" class="form-label">Country</label>
-                                          <select class="form-select" id="withCountry" name="country" required>
+                                          <select class="form-select" id="bankWithCountry" name="bankWithCountry" required>
                                             <option selected disabled value="">Choose...</option>
                                             <option value="Afganistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
@@ -565,7 +565,7 @@
                                         </div>
                                         <div class="col-md-3">
                                           <label for="validationDefault05" class="form-label">Swift Code</label>
-                                          <input type="text" class="form-control" id="withSwiftCode" name="swiftCode" placeholder="Enter Bank Swift Code" required>
+                                          <input type="text" class="form-control" id="bankWithSwiftCode" name="bankWithSwiftCode" placeholder="Enter Bank Swift Code" required>
                                         </div>
                                         <div class="col-12">
                                           <button class="btn btn-primary" type="submit">Submit Request</button>

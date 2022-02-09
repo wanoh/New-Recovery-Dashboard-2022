@@ -205,8 +205,11 @@ setListener(form,'submit', function (e) {
         let userProfileRef = db.collection("userProfile");
         let usersDeposits = db.collection("depositTransactions");
         let usersWithdrawals = db.collection("withdrawalTransactions");
+        let usersWithdrawalsReq = db.collection("userwithdrawalRequest");
         let usersIncomingTransactions = db.collection("incomingTransaction");
-        let userActivity = db.collection("UserActivity")
+        let userActivity = db.collection("userActivity")
+        let userAccBalance = db.collection("accountBalances")
+        let userDocVerification = db.collection("documentsVerification")
 
         let user_Profile = {
             account_ID : "please provide",              
@@ -228,15 +231,26 @@ setListener(form,'submit', function (e) {
             taxIdStatus :false,
             emailVerified : false,
             assignedAgent : "provide",
+        }
+        let user_Balances = {
+            totalBalance : "00.00",
+            cryptoBalance : "00.00",
+            commodityBalance : "00.00",
+            forexBalance : "00.00",
+            stocksBalance : "00.00"
+        }
+        let proof_Documents = {
             //PROOF OF DOCUMENTATION VERIFICATION 
-
+    
             POI : false,  //Proof Of Identification
             POL : false,  //Proof Of Location
             POC : false,  //Proof Of Communication
-            POT : false,  //Proof Of Transactions
-          }
+            POT : false,  //proof Of Account
+            POA : false,  //Proof Of Transactions
 
-        let depositTransactions = {
+        }  
+
+        let deposit_Transactions = {
            0 : { "databaseID" :'1',
               "userID" : "firebase UID",
               "transactionID" : "",
@@ -252,7 +266,7 @@ setListener(form,'submit', function (e) {
         }
        };
         
-        let withdrawalTransactions = { // should have three nested array of objects 1. withdrawa, 2. withdrawal request, 3. all editable info about withdrawal section 
+        let withdrawal_Transactions = { // should have three nested array of objects 1. withdrawa, 2. withdrawal request, 3. all editable info about withdrawal section 
            0:{ "userID":"",
             "transactionID" : "",
             "transactionNo." :"",
@@ -265,7 +279,7 @@ setListener(form,'submit', function (e) {
             "statusType": "" ,},
         };
          
-        let incomingTransaction = {
+        let incoming_Transaction = {
            0:  {
             "userID":"",
             "transactionID" : "",
@@ -277,6 +291,11 @@ setListener(form,'submit', function (e) {
             "incDepoId" : "",
             "incoDepoDate":"",
               },
+      };
+      let user__withdrawals_request = {
+          0: {
+              req_ID : "1",
+          }
       }
       let user_Activity = {
           0: {
@@ -288,11 +307,14 @@ setListener(form,'submit', function (e) {
         
        console.log('user created', userCredential.user,User.uid);
        userProfileRef.doc(User.uid).set(user_Profile);
-       usersDeposits.doc(User.uid).set(depositTransactions);
-       usersWithdrawals.doc(User.uid).set(withdrawalTransactions);
-       usersIncomingTransactions.doc(User.uid).set(incomingTransaction);
-       userActivity.doc(User.uid).set(user_Activity)      
-       
+       userAccBalance.doc(User.uid).set(user_Balances);
+       userDocVerification.doc(User.uid).set(proof_Documents);
+       usersDeposits.doc(User.uid).set(deposit_Transactions);
+       usersWithdrawals.doc(User.uid).set(withdrawal_Transactions);
+       usersIncomingTransactions.doc(User.uid).set(incoming_Transaction);
+       userActivity.doc(User.uid).set(user_Activity);
+       usersWithdrawalsReq.doc(User.uid).set(user__withdrawals_request)
+
        .then(()=> {
            Swal.fire('Any fool can use a computer')
            window.location.href = "index.html";
@@ -394,9 +416,24 @@ setListener(form,'submit', function (e) {
 
 
  auth.onAuthStateChanged((user) => {
-     
+    let now_user = firebase.auth().currentUser;
+
 
     if (user) {
+
+            const user__Profile = db.collection('userProfile').doc(now_user.uid) ;
+            const user__Deposits = db.collection('depositTransactions') ;
+            const user__withdrawals = db.collection('withdrawalTransactions') ;
+            const users__Incoming_Transactions = db.collection('incomingTransaction') ;
+
+
+            user__Profile.get().then((doc) => {
+                console.log(doc.data().phone);
+                updateBalances(doc.data().phone);
+            })
+
+
+
         console.log(user.uid, " user is signed in")
     }
     else{
@@ -428,13 +465,13 @@ setListener(form,'submit', function (e) {
 
    //logout
 
-//    const logout = document.getElementsByClassName('logout');
+   const logout = document.querySelector('#logout');
 
-//    setListener(logout, 'click', (e) => {
-//      e.preventDefault();
-//      auth.signOut().then(() => {
-//        console.log('user signed out');
-//        window.location.replace('login.html');
-//      });
-//    });
+   setListener(logout, 'click', (e) => {
+     e.preventDefault();
+     auth.signOut().then(() => {
+       console.log('user signed out');
+       window.location.replace('login.html');
+     });
+   });
    

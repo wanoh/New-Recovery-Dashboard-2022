@@ -343,8 +343,8 @@
                                             <i class="uil uil-user-circle fs-3 mb-0"></i>
                                         </div>
                                         <div class="flex-1 ms-3">
-                                            <h6 class="mb-0 text-muted">Visitor</h6>
-                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="4589">2100</span></p>
+                                            <h6 class="mb-0 text-muted">CryptoCurrency</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0" ><span class="counter-value" id="cryptoUI" >2100</span></p>
                                         </div>
                                     </div>
                                     <!---
@@ -360,8 +360,8 @@
                                             <i class="uil uil-usd-circle fs-3 mb-0"></i>
                                         </div>
                                         <div class="flex-1 ms-3">
-                                            <h6 class="mb-0 text-muted">Revenue</h6>
-                                            <p class="fs-5 text-dark fw-bold mb-0">$<span class="counter-value" data-target="48575">35214</span></p>
+                                            <h6 class="mb-0 text-muted">Forex</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0" id="forexUI">$<span class="counter-value" data-target="48575">35214</span></p>
                                         </div>
                                     </div>
                                     <!--
@@ -380,8 +380,8 @@
                                             <i class="uil uil-store fs-4 mb-0"></i>
                                         </div>
                                         <div class="flex-1 ms-3">
-                                            <h6 class="mb-0 text-muted">Items</h6>
-                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="145">23</span></p>
+                                            <h6 class="mb-0 text-muted">Stocks</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0" id="stocksUI"><span class="counter-value" data-target="145">23</span></p>
                                         </div>
                                     </div>
                                     <!--
@@ -398,8 +398,8 @@
                                             <i class="uil uil-users-alt fs-4 mb-0"></i>
                                         </div>
                                         <div class="flex-1 ms-3">
-                                            <h6 class="mb-0 text-muted">Users</h6>
-                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="9">1.5</span>M</p>
+                                            <h6 class="mb-0 text-muted">Commodities</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0" id="commoditiesUI"><span class="counter-value" data-target="9">1.5</span>M</p>
                                         </div>
                                     </div>
                                     <!--
@@ -439,7 +439,7 @@
                                                 <th class="text-end border-bottom p-3" style="min-width: 100px;">Completion</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="incomingTransactionsUI">
                                             <!-- Start -->
                                             <tr>
                                                 <th class="p-3">#d01</th>
@@ -1204,8 +1204,9 @@
         <script src="assets/js/simplebar.min.js"></script>
         <!-- Icons -->
         <script src="assets/js/feather.min.js"></script>
-        <!-- Chart -->
+        <!-- Chart 
         <script src="assets/js/apexcharts.min.js"></script>
+        -->
         <!-- Main Js -->
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
