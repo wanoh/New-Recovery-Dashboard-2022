@@ -214,9 +214,8 @@ setListener(form,'submit', function (e) {
         let user_Profile = {
             account_ID : "please provide",              
             account: "Recovery",
-            fullName: "registerFullName",
-            email: "registerEmail",
-            password : "password",
+            email: registerEmail,
+            password : registerPassword,
             firstName: "Please Provide",
             lastName : "Please Provide",
             address :"Please Provide",
@@ -264,7 +263,7 @@ setListener(form,'submit', function (e) {
               "statusType" : "",
 
         }
-       };
+        };
         
         let withdrawal_Transactions = { // should have three nested array of objects 1. withdrawa, 2. withdrawal request, 3. all editable info about withdrawal section 
            0:{ "userID":"",
@@ -281,29 +280,48 @@ setListener(form,'submit', function (e) {
          
         let incoming_Transaction = {
            0:  {
-            "userID":"",
-            "transactionID" : "",
-            "transactionNo." :"",
-            "transactionTime" : "",
-            "incoOrigin" : "",                
-            "amount" : "€ 00.00",                
-            "progress" : "",
-            "incDepoId" : "",
-            "incoDepoDate":"",
+            "userID": User.uid,
+            "transactionTime" : "13.05",
+            "incoOrigin" : "Alpha Bank",                
+            "amount" : "00.00",                
+            "progress" : 45, //value linked with status
+            "incDepoStatus" : "",
+            "incoDepoDate":"10/11/2022",
+            "transactionNo" :1
               },
-      };
-      let user__withdrawals_request = {
+            1 : {
+                "userID": User.uid,
+                "transactionTime" : "10.47",
+                "incoOrigin" : "Global Money",                
+                "amount" : "00.00",                
+                "progress" : 15, //value linked with status
+                "incDepoStatus" : "",
+                "incoDepoDate":"18/04/2022",
+                "transactionNo": 2
+            },
+            2 : {
+                "userID": User.uid,
+                "transactionTime" : "16.23",
+                "incoOrigin" : "finace Inc.",                
+                "amount" : "00.00",                
+                "progress" : 75, //value linked with status
+                "incDepoStatus" : "",
+                "incoDepoDate":"23/08/2022",
+                "transactionNo": 3
+            }
+        };
+       let user__withdrawals_request = {
           0: {
               req_ID : "1",
           }
-      }
-      let user_Activity = {
+        }
+       let user_Activity = {
           0: {
             actName: "",
             actTime : "",
             actExecutor: "",  
           }
-      }
+       }
         
        console.log('user created', userCredential.user,User.uid);
        userProfileRef.doc(User.uid).set(user_Profile);
@@ -422,19 +440,39 @@ setListener(form,'submit', function (e) {
     if (user) {
 
             const user__Profile = db.collection('userProfile').doc(now_user.uid) ;
+            const user__balances = db.collection('accountBalances').doc(now_user.uid);
             const user__Deposits = db.collection('depositTransactions') ;
             const user__withdrawals = db.collection('withdrawalTransactions') ;
-            const users__Incoming_Transactions = db.collection('incomingTransaction') ;
+            const users__Incoming_Transactions = db.collection('incomingTransaction').doc(now_user.uid);
 
 
-            user__Profile.get().then((doc) => {
-                console.log(doc.data().phone);
-                updateBalances(doc.data().phone);
-            })
+            user__balances.get().then((doc) => {
+                console.log(doc.data().cryptoBalance);
+                window.onload(
+
+                    updateBalances(doc.data().cryptoBalance, doc.data().stocksBalance, doc.data().commodityBalance, doc.data().forexBalance)
+                    )
+                });
 
 
+            users__Incoming_Transactions.get().then((doc) => {
+                for(let key in doc.data()){
+                    const {incoOrigin, progress,incoDepoDate,amount,transactionNo} = doc.data()[key];
+                    console.log((doc.data()[key]));
+                    const  incomingTBodyEl = document.querySelector('#incomingTransactionsUI');
 
-        console.log(user.uid, " user is signed in")
+                    const incoming_table_row = document.createElement('tr');
+                    console.log(incom_transID(transactionNo))
+                   console.log(incom_comp_Name(incoOrigin))
+                    console.log(incom_date(incoDepoDate))
+                    console.log(incom_amount(amount))
+                   console.log(incom_status(progress))
+                   console.log(incom_progress(progress))
+
+                }
+            });
+
+
     }
     else{
         console.log("no user ")
