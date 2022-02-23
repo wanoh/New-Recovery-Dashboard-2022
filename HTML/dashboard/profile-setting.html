@@ -18,6 +18,8 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- simplebar -->
         <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
+        <!--Sweet Alert-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
         <!-- Icons -->
         <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/tabler-icons.min.css" rel="stylesheet" type="text/css" />
@@ -279,14 +281,15 @@
                                             </div>
                                         </div>
         
-                                        <form>
+                                        <form id="personalDetailsUI">
                                             <div class="row mt-4">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">First Name</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="user" class="fea icon-sm icons"></i>
-                                                            <input name="name" id="first" type="text" class="form-control ps-5" placeholder="First Name :">
+                                                            <input name="first__name" id="first__name" type="text" class="form-control ps-5" placeholder="First Name :">
+                                                            <small class="text-danger" id=errorMessage></small>
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -295,7 +298,8 @@
                                                         <label class="form-label">Last Name</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                                            <input name="name" id="last" type="text" class="form-control ps-5" placeholder="Last Name :">
+                                                            <input name="last__name" id="last__name" type="text" class="form-control ps-5" placeholder="Last Name :">
+                                                            <small class="text-danger" id=errorMessage></small>
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -304,7 +308,8 @@
                                                         <label class="form-label">Your Email</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                            <input name="email" id="email" type="email" class="form-control ps-5" placeholder="Your email :">
+                                                            <input name="profile__email" id="profile__email" type="email" class="form-control ps-5" placeholder="Your email :">
+                                                            <small class="text-danger" id=errorMessage></small>
                                                         </div>
                                                     </div> 
                                                 </div><!--end col-->
@@ -313,16 +318,18 @@
                                                         <label class="form-label">Occupation</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="bookmark" class="fea icon-sm icons"></i>
-                                                            <input name="name" id="occupation" type="text" class="form-control ps-5" placeholder="Occupation :">
+                                                            <input name="occupation" id="occupation" type="text" class="form-control ps-5" placeholder="Occupation :">
+                                                            <small class="text-danger" id=errorMessage></small>
                                                         </div>
                                                     </div> 
                                                 </div><!--end col-->
                                                 <div class="col-lg-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Description</label>
+                                                        <label class="form-label">Date Of Birth</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="message-circle" class="fea icon-sm icons"></i>
-                                                            <input name="comments" id="comments" type="text" class="form-control ps-5" placeholder="Description :"></input>
+                                                            <input name="date_of_birth" id="date_of_birth" type="text" class="form-control ps-5" placeholder="Description :"></input>
+                                                            <small class="text-danger" id=errorMessage></small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -339,14 +346,15 @@
                                 <div class="card border-0 rounded shadow p-4 mt-4">
                                     <h5 class="mb-0">Contact Info :</h5>
 
-                                    <form>
+                                    <form id="contactdetailsUI">
                                         <div class="row mt-4">
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone No. :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="smartphone" class="fea icon-sm icons"></i>
-                                                        <input name="number" id="number" type="number" class="form-control ps-5" placeholder="Phone :">
+                                                        <input name="profile__number" id="profile__number" type="number" class="form-control ps-5" placeholder="Phone :">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -356,7 +364,8 @@
                                                     <label class="form-label">Home Number :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="phone-call" class="fea icon-sm icons"></i>
-                                                        <input name="Number" id="url" type="number" class="form-control ps-5" placeholder="Home Number :">
+                                                        <input name="profile__Hnumber" id="profile__Hnumber" type="number" class="form-control ps-5" placeholder="Home Number :">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -372,14 +381,15 @@
                             <div class="col-lg-4 mt-4">
                                 <div class="card border-0 rounded shadow p-4">
                                     <h5 class="mb-0">Change password :</h5>
-                                    <form>
+                                    <form id="passwordDetailsUI">
                                         <div class="row mt-4">
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Old password :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                                        <input type="password" class="form-control ps-5" placeholder="Old password" required="">
+                                                        <input type="profile_old_password" id="profile_old_password" class="form-control ps-5" placeholder="Old password" required="">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -389,7 +399,8 @@
                                                     <label class="form-label">New password :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                                        <input type="password" class="form-control ps-5" placeholder="New password" required="">
+                                                        <input type="password" id="profile_new_password" class="form-control ps-5" placeholder="New password" required="">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -399,7 +410,8 @@
                                                     <label class="form-label">Re-type New password :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                                        <input type="password" class="form-control ps-5" placeholder="Re-type New password" required="">
+                                                        <input type="password" id="profile_new_password_retype" class="form-control ps-5" placeholder="Re-type New password" required="">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -412,14 +424,15 @@
                                 </div>                                
                                 <div class="card border-0 rounded shadow p-4 mt-4">
                                     <h5 class="mb-0">Location Info :</h5>
-                                    <form>
+                                    <form id="locationDetailsUI">
                                         <div class="row mt-4">
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Country :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="map" class="fea icon-sm icons"></i>
-                                                        <input type="text" class="form-control ps-5" placeholder="Select Country" required="">
+                                                        <input type="text" id="profile__country" class="form-control ps-5" placeholder="Select Country" required="">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -429,7 +442,8 @@
                                                     <label class="form-label">City :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="map-pin" class="fea icon-sm icons"></i>
-                                                        <input type="text" class="form-control ps-5" placeholder="City" required="">
+                                                        <input type="text" id="profile__city" class="form-control ps-5" placeholder="City" required="">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -439,7 +453,8 @@
                                                     <label class="form-label">Residence Address :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="home" class="fea icon-sm icons"></i>
-                                                        <input type="text" class="form-control ps-5" placeholder="Residence Address" required="">
+                                                        <input type="text" id="profile__residence" class="form-control ps-5" placeholder="Residence Address" required="">
+                                                        <small class="text-danger" id=errorMessage></small>
                                                     </div>
                                                 </div>
                                             </div><!--end col-->

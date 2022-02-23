@@ -223,6 +223,9 @@ setListener(form,'submit', function (e) {
             country : "Please Provide",
             phone : "Please Provide",
             lastLogin : "lastlogintime",
+            occupation : "please provide",
+            DOB : "",
+
 
             //userPotential: Number , // 1 = not interested , 2 = needs more time, 3 = potential, 4 = high potential, 5 = FTD, 6 = taxcode , 7 = second Deposit , 8 = second deposit , 9 = burn
             joinDate: "provide",
@@ -471,6 +474,24 @@ setListener(form,'submit', function (e) {
 
                 }
             });
+
+            user__Profile.get().then((doc)=>{
+                let profileRef = doc.data();
+                const { email, password, firstName, lastName, address, city, phone, occupation, DOB} = profileRef
+
+                profileRef.update({
+                    firstName : updatePersonal()[0],
+                    lastName : updatePersonal()[1],
+                    email : updatePersonal()[2]
+                })
+                .then(() =>{
+                    Swal.fire('updated')
+                }).catch((error)=>{
+                    console.log('doc not updated',error)
+                })
+
+                updatePersonal(email,firstName,lastName,DOB,occupation,profileRef)
+            })
 
 
     }

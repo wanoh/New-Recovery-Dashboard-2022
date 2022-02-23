@@ -3,19 +3,19 @@
 console.log('this is the profile page');
 
 
-let firstNameEl = document.querySelector('#')
-let lastNameEl = document.querySelector('#')
-let emailEl = document.querySelector('#')
-let countryEl = document.querySelector('#')
-let cityEl = document.querySelector('#')
-let addressEl = document.querySelector('#')
-let cellNoEl = document.querySelector('#')
+let firstNameEl = document.getElementById('firstNameUI')
+let lastNameEl = document.getElementById('lastNameUI')
+let emailEl = document.getElementById('emailUI')
+let countryEl = document.getElementById('countryUI')
+let cityEl = document.getElementById('cityUI')
+let addressEl = document.getElementById('addressUI')
+let cellNoEl = document.getElementById('phoneNumberUI')
 
 
 // PROOF DOCUMENTS ELEMENT SELECTORS
 
-let proofIdentityEl = document.querySelector('#')
-let proofAddressEl = document.querySelector('#')
-let proofCommEl = document.querySelector('#')
-let proofAccountEl = document.querySelector('#')
-let prooftransEl = document.querySelector('#')
+let proofIdentityEl = document.getElementById('proofOfIdentityUI')
+let proofAddressEl = document.getElementById('proofOfAddressUI')
+let proofCommEl = document.getElementById('proofOfCommUI')
+let proofAccountEl = document.getElementById('proofOfAccUI')
+let prooftransEl = document.getElementById('proofOfTransUI')
