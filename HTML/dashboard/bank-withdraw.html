@@ -122,7 +122,7 @@
             <!-- sidebar-wrapper -->
 
             <!-- Start Page Content -->
-            <main class="page-content bg-light">
+            <main class="page-content bg-light" id="bank-withdrawal-page">
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between">
                         <div class="d-flex align-items-center">
@@ -288,28 +288,33 @@
                             <div class="col-md-7 col-lg-8 mt-4">
                                 <div class="card rounded shadow p-4 border-0">
                                     <h4 class="mb-3">Swift Bank Transfer</h4>
-                                    <form class="row g-3" id="bankWithdrawalForm">
+                                    <form class="row g-3 needs-validation" id="bankWithdrawalForm" novalidate>
                                         <div class="col-md-12">
                                           <label for="validationDefault01" class="form-label">Transaction Amount (€)</label>
                                           <input type="text" class="form-control" id="bankWithAmount" name="bankWithAmount" placeholder="Enter full amount ...€00.00" required>
+                                          <small class="text-danger" id=errorMessage></small>
                                         </div>
                                         <div class="col-md-4">
                                           <label for="validationDefault01" class="form-label">Account Holder's Name</label>
                                           <input type="text" class="form-control" id="bankWithAccHolName" name="bankWithAccHolName" placeholder="Enter Full Name" required>
+                                          <small class="text-danger" id=errorMessage></small>
                                         </div>
                                         <div class="col-md-4">
                                           <label for="validationDefault02" class="form-label">Account Number</label>
                                           <input type="text" class="form-control" id="bankWithAccNumber" name="bankWithAccNumber" placeholder="Enter Account Number" required>
+                                          <small class="text-danger" id=errorMessage></small>
                                         </div>
                                         <div class="col-md-4">
                                           <label for="validationDefaultUsername" class="form-label">IBAN Number</label>
                                           <div class="input-group">
                                             <input type="text" class="form-control" id="bankWithIbanNumber" name="bankWithIbanNumber" placeholder="Enter IBAN Number"  aria-describedby="inputGroupPrepend2" required>
+                                            <small class="text-danger" id=errorMessage></small>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
                                           <label for="validationDefault03" class="form-label">Bank Name</label>
                                           <input type="text" class="form-control" id="bankWithBankName" name="bankWithBankName" placeholder="Enter Receiving Bank Name" required>
+                                          <small class="text-danger" id=errorMessage></small>
                                         </div>
                                         <div class="col-md-3">
                                           <label for="validationDefault04" class="form-label">Country</label>
@@ -566,6 +571,7 @@
                                         <div class="col-md-3">
                                           <label for="validationDefault05" class="form-label">Swift Code</label>
                                           <input type="text" class="form-control" id="bankWithSwiftCode" name="bankWithSwiftCode" placeholder="Enter Bank Swift Code" required>
+                                          <small class="text-danger" id=errorMessage></small>
                                         </div>
                                         <div class="col-12">
                                           <button class="btn btn-primary" type="submit">Submit Request</button>

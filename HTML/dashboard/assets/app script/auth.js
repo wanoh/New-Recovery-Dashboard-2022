@@ -95,8 +95,6 @@ const checkLastname = () => {
 
     const checkPassword = () => {
     let valid = false;
-
-
     const password = passwordEl.value.trim();
 
     if (!isRequired(password)) {
@@ -141,7 +139,7 @@ const isEmailValid = (email) => {
 
     const isRequired = value => value === '' ? false : true;
     const isBetween = (length, min, max) => length < min || length > max ? false : true;
-
+    const checkIsNumber = value => typeof(value) == 'number' ? false : true; 
 
     const showError = (input, message) => {
     // get the form-field element
@@ -205,7 +203,10 @@ setListener(form,'submit', function (e) {
         let userProfileRef = db.collection("userProfile");
         let usersDeposits = db.collection("depositTransactions");
         let usersWithdrawals = db.collection("withdrawalTransactions");
-        let usersWithdrawalsReq = db.collection("userwithdrawalRequest");
+        let usersBankWithdrawalsReq = db.collection("userBankwithdrawalRequest");
+        let usersCryptoWithdrawalsReq = db.collection("userCryptowithdrawalRequest");
+        let usersBankDepositReq = db.collection("userCryptodepositRequest");
+        let usersCryptoDepositReq = db.collection("userbankdepositRequest");
         let usersIncomingTransactions = db.collection("incomingTransaction");
         let userActivity = db.collection("userActivity")
         let userAccBalance = db.collection("accountBalances")
@@ -252,24 +253,52 @@ setListener(form,'submit', function (e) {
 
         }  
 
-        let deposit_Transactions = {
-           0 : { "databaseID" :'1',
-              "userID" : "firebase UID",
-              "transactionID" : "",
+        let deposit_Transactions = [
+            { "databaseID" :'1',
+              "userID" : User.uid,
+              "transactionID" : "RDT5968",
               "transactionNo" : "",
-              "transactionTime" : "",
-              "depositOrigin" : "",
-              "depositDate" : "",
+              "transactionTime" : "12:09 AM",
+              "depositOrigin" : "agent 1",
+              "depositDate" : "23/06/2021",
               "amount" : "€ 00.00",
-              "type" : "",
-              "status" : "",
+              "type" : "Crypto Deposit",
+              "status" : false,
+              "statusType" : "",
+
+        },
+            { "databaseID" :'2',
+              "userID" : User.uid,
+              "transactionID" : "RDT345",
+              "transactionNo" : "",
+              "transactionTime" : "04:09 PM",
+              "depositOrigin" : "agent 2",
+              "depositDate" : "15/02/2021",
+              "amount" : "€ 00.00",
+              "type" : "Bank Deposit",
+              "status" : true,
+              "statusType" : "",
+
+        },
+            { "databaseID" :'3',
+              "userID" : User.uid,
+              "transactionID" : "RDT384",
+              "transactionNo" : "",
+              "transactionTime" : "02:09 PM",
+              "depositOrigin" : "agent 3",
+              "depositDate" : "13/08/2021",
+              "amount" : "€ 00.00",
+              "type" : "Crypto Deposit",
+              "status" : false,
               "statusType" : "",
 
         }
-        };
+
+    ];
         
-        let withdrawal_Transactions = { // should have three nested array of objects 1. withdrawa, 2. withdrawal request, 3. all editable info about withdrawal section 
-           0:{ "userID":"",
+        let withdrawal_Transactions = [ // should have three nested array of objects 1. withdrawa, 2. withdrawal request, 3. all editable info about withdrawal section 
+           
+            { "userID":"",
             "transactionID" : "",
             "transactionNo." :"",
             "transactionTime" : "",
@@ -278,11 +307,33 @@ setListener(form,'submit', function (e) {
             "amount" : "€ 00.00",
             "type" : "",
             "status" : "",
-            "statusType": "" ,},
-        };
+            "statusType": "" },
+
+           { "userID":"",
+            "transactionID" : "",
+            "transactionNo." :"",
+            "transactionTime" : "",
+            "withdrawalOrigin" : "",//user or Admin
+            "withdrawalDate" : "",
+            "amount" : "€ 00.00",
+            "type" : "",
+            "status" : "",
+            "statusType": "" },
+
+           { "userID":"",
+            "transactionID" : "",
+            "transactionNo." :"",
+            "transactionTime" : "",
+            "withdrawalOrigin" : "",//user or Admin
+            "withdrawalDate" : "",
+            "amount" : "€ 00.00",
+            "type" : "",
+            "status" : "",
+            "statusType": "" },
+            ];
          
-        let incoming_Transaction = {
-           0:  {
+        let incoming_Transaction = [
+             {
             "userID": User.uid,
             "transactionTime" : "13.05",
             "incoOrigin" : "Alpha Bank",                
@@ -292,7 +343,7 @@ setListener(form,'submit', function (e) {
             "incoDepoDate":"10/11/2022",
             "transactionNo" :1
               },
-            1 : {
+             {
                 "userID": User.uid,
                 "transactionTime" : "10.47",
                 "incoOrigin" : "Global Money",                
@@ -302,7 +353,7 @@ setListener(form,'submit', function (e) {
                 "incoDepoDate":"18/04/2022",
                 "transactionNo": 2
             },
-            2 : {
+             {
                 "userID": User.uid,
                 "transactionTime" : "16.23",
                 "incoOrigin" : "finace Inc.",                
@@ -312,29 +363,49 @@ setListener(form,'submit', function (e) {
                 "incoDepoDate":"23/08/2022",
                 "transactionNo": 3
             }
-        };
-       let user__withdrawals_request = {
-          0: {
+        ];
+              
+       let user__bank_withdrawals_request  = [
+           {
               req_ID : "1",
           }
+        ];
+       let user__crypto_withdrawals_request = [
+           {
+              req_ID : "1",
+          }
+        ];
+       let user__bank_deposit_request = [
+         {
+            req_ID : "1",
         }
-       let user_Activity = {
-          0: {
+      ];
+       let user__crypto_deposit_request = [
+         {
+            req_ID : "1",
+        }
+     ]; 
+       let user_Activity = [
+           {
             actName: "",
             actTime : "",
             actExecutor: "",  
           }
-       }
+        ]
         
        console.log('user created', userCredential.user,User.uid);
        userProfileRef.doc(User.uid).set(user_Profile);
        userAccBalance.doc(User.uid).set(user_Balances);
        userDocVerification.doc(User.uid).set(proof_Documents);
-       usersDeposits.doc(User.uid).set(deposit_Transactions);
-       usersWithdrawals.doc(User.uid).set(withdrawal_Transactions);
-       usersIncomingTransactions.doc(User.uid).set(incoming_Transaction);
-       userActivity.doc(User.uid).set(user_Activity);
-       usersWithdrawalsReq.doc(User.uid).set(user__withdrawals_request)
+       usersDeposits.doc(User.uid).set({deposit_Transactions});
+       usersWithdrawals.doc(User.uid).set({withdrawal_Transactions});
+       usersIncomingTransactions.doc(User.uid).set({incoming_Transaction});
+       userActivity.doc(User.uid).set({user_Activity});
+       usersBankWithdrawalsReq.doc(User.uid).set({user__bank_withdrawals_request});
+       usersCryptoWithdrawalsReq.doc(User.uid).set({user__crypto_withdrawals_request});
+       usersBankDepositReq.doc(User.uid).set({user__bank_deposit_request})
+       usersCryptoDepositReq.doc(User.uid).set({user__crypto_deposit_request})
+       
 
        .then(()=> {
            Swal.fire('Any fool can use a computer')
@@ -443,56 +514,183 @@ setListener(form,'submit', function (e) {
     if (user) {
 
             const user__Profile = db.collection('userProfile').doc(now_user.uid) ;
+            const user__documentVerification = db.collection('documentsVerification').doc(now_user.uid) ;
             const user__balances = db.collection('accountBalances').doc(now_user.uid);
-            const user__Deposits = db.collection('depositTransactions') ;
-            const user__withdrawals = db.collection('withdrawalTransactions') ;
-            const users__Incoming_Transactions = db.collection('incomingTransaction').doc(now_user.uid);
+            const user__Deposits = db.collection('depositTransactions').doc(now_user.uid) ;
+            const user__withdrawals = db.collection('withdrawalTransactions').doc(now_user.uid) ;
+            const user__Incoming_Transactions = db.collection('incomingTransaction').doc(now_user.uid);
+            const user__bank_withdrawals_requests = db.collection('userBankwithdrawalRequest').doc(now_user.uid);
+            const user__crypto_withdrawals_requests = db.collection('userCryptowithdrawalRequest').doc(now_user.uid);
+            const user__bank_deposits_requests = db.collection('userbankdepositRequest').doc(now_user.uid);
+            const user__crypto_deposits_requests = db.collection('userCryptodepositRequest').doc(now_user.uid);
+            const users__Activities = db.collection('userActivity').doc(now_user.uid);
 
+
+ 
 
             user__balances.get().then((doc) => {
                 console.log(doc.data().cryptoBalance);
-                window.onload(
+                let dashboardPage = document.getElementById('dashboardPage');
 
-                    updateBalances(doc.data().cryptoBalance, doc.data().stocksBalance, doc.data().commodityBalance, doc.data().forexBalance)
-                    )
-                });
+              if(dashboardPage){
+                  updateBalances(doc.data().cryptoBalance, doc.data().stocksBalance, doc.data().commodityBalance, doc.data().forexBalance)
+              }else{
+                  console.log('**dashboard**')
+              }
 
+                    
+            });
 
-            users__Incoming_Transactions.get().then((doc) => {
-                for(let key in doc.data()){
-                    const {incoOrigin, progress,incoDepoDate,amount,transactionNo} = doc.data()[key];
-                    console.log((doc.data()[key]));
+            user__Incoming_Transactions.get().then((doc) => {
+                //load dashboard page
+                let dashboardPage = document.getElementById('dashboardPage');
+
+                for(let key in doc.data().incoming_Transaction){
+                    const {incoOrigin, progress,incoDepoDate,amount,transactionNo} = doc.data().incoming_Transaction[key];
+                    console.log((doc.data().incoming_Transaction[key]));
                     const  incomingTBodyEl = document.querySelector('#incomingTransactionsUI');
 
                     const incoming_table_row = document.createElement('tr');
-                    console.log(incom_transID(transactionNo))
-                   console.log(incom_comp_Name(incoOrigin))
-                    console.log(incom_date(incoDepoDate))
-                    console.log(incom_amount(amount))
-                   console.log(incom_status(progress))
-                   console.log(incom_progress(progress))
+
+                    if(dashboardPage){
+                        console.log(incom_transID(transactionNo))
+                       console.log(incom_comp_Name(incoOrigin))
+                        console.log(incom_date(incoDepoDate))
+                        console.log(incom_amount(amount))
+                       console.log(incom_status(progress))
+                       console.log(incom_progress(progress))
+                    }else{
+                        console.log('**dashboard**')
+                    }
+      
 
                 }
             });
 
             user__Profile.get().then((doc)=>{
+                //Load the profile page
+                let profilePage = document.getElementById('profile_page');
+
                 let profileRef = doc.data();
-                const { email, password, firstName, lastName, address, city, phone, occupation, DOB} = profileRef
+                const { email, password, firstName, lastName, address, city,country, phone, occupation, DOB} = profileRef
 
-                profileRef.update({
-                    firstName : updatePersonal()[0],
-                    lastName : updatePersonal()[1],
-                    email : updatePersonal()[2]
+                if(profilePage){
+                profile_display(firstName,lastName,email,country,city,address,phone)
+                }else{
+                    console.log('**profilepage**')
+                }
+
+
+                // profileRef.update({
+                //     firstName : updatePersonal()[0],
+                //     lastName : updatePersonal()[1],
+                //     email : updatePersonal()[2]
+                // })
+                // .then(() =>{
+                //     Swal.fire('updated')
+                // }).catch((error)=>{
+                //     console.log('doc not updated',error)
+                // })
+
+                // updatePersonal(email,firstName,lastName,DOB,occupation,profileRef)
+            });
+
+            user__documentVerification.get().then((doc) =>{
+                 //Load the profile page
+                 let profilePage = document.getElementById('profile_page');
+
+                let verificationRef = doc.data();
+                const {POI,POL,POC,POA,POT} = verificationRef
+
+                if(profilePage){
+                    verification_display(POI,POL,POC,POA,POT)
+                    }else{
+                        console.log('**profilepage**')
+                    }
+
+            });
+
+            user__Deposits.get().then((doc)=>{
+                let deposits_transactions = doc.data();
+            });
+
+            user__withdrawals.get().then((doc)=>{
+                let withdrawals_Transactions_data = doc.data();
+            });
+
+
+            /**LIST OF ALL WITHDRAWAL ACTIVITY UPDATE FUNCTIONS */
+             const updateBankWithActivity = (dataLoc) =>{
+                 let updateText = `withdrawal request was issued by this user`;
+                
+                 users__Activities.update({
+                    user_Activity: firebase.firestore.FieldValue.arrayUnion({withdrawData})
+                });
+              
+
+            } 
+
+            user__bank_withdrawals_requests.get().then((doc) =>{
+                let bank_withdrawals_data = doc.data()
+
+                let bank_withdrawal_form = document.querySelector("#bankWithdrawalForm");
+
+                setListener(bank_withdrawal_form, 'submit', (e) =>{
+                    e.preventDefault();
+
+                    let bank_with_amount = document.querySelector("#bankWithAmount")
+                    let bank_with_acc_hol_name = document.querySelector("#bankWithAccHolName")
+                    let bank_with_acc_number = document.querySelector("#bankWithAccNumber")
+                    let bank_with_iban_number = document.querySelector("#bankWithIbanNumber")
+                    let bank_with_bank_name = document.querySelector("#bankWithBankName")
+                    let bank_with_country = document.querySelector("#bankWithCountry")
+                    let bank_with_swift_code = document.querySelector("#bankWithSwiftCode")
+
+                     withdrawData = {                       
+                        amount:  bank_with_amount.value,
+                        accountHolder: bank_with_acc_hol_name.value,
+                        accountNumber :bank_with_acc_number.value,
+                        //ibanNumber: bank_with_iban_number.valid,
+                        bankName:  bank_with_bank_name.value,
+                        bankCountry: bank_with_country.value,
+                        swiftCoe:  bank_with_swift_code.value                    
+                      }
+                      let isBankAmountValid = checkWithAmount();
+                          
+                      let isWithdrawalFormValid = isBankAmountValid
+
+                      if(isWithdrawalFormValid){
+
+                        user__bank_withdrawals_requests.update({
+                            user__bank_withdrawals_request: firebase.firestore.FieldValue.arrayUnion({withdrawData})
+                        });
+                      }
+                        
+                        
                 })
-                .then(() =>{
-                    Swal.fire('updated')
-                }).catch((error)=>{
-                    console.log('doc not updated',error)
+            });
+
+            user__crypto_withdrawals_requests.get().then((doc) =>{
+                let crypto_withdrawals_data = doc.data()
+                let crypto_withdrawals_form = document.querySelector("#cryptoWithdrawalForm")
+                
+
+                setListener(crypto_withdrawals_form,'submit', (e) =>{
+                    e.preventDefault();
+
+                    console.log("yes")
                 })
+            });
 
-                updatePersonal(email,firstName,lastName,DOB,occupation,profileRef)
-            })
+            user__bank_deposits_requests.get().then((doc) =>{
+                let bank_deposits_data = doc.data()
 
+            });
+
+            user__crypto_deposits_requests.get().then((doc) =>{
+                let crypto_deposit_data = doc.data()
+            });
+            
 
     }
     else{

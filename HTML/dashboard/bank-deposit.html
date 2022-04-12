@@ -120,7 +120,7 @@
             <!-- sidebar-wrapper -->
 
             <!-- Start Page Content -->
-            <main class="page-content bg-light">
+            <main class="page-content bg-light" id="bank-deposit-page">
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between">
                         <div class="d-flex align-items-center">
@@ -303,17 +303,17 @@
                                     </ul>
                                     
                                     <div class="tab-content mt-4" id="pills-tabContent">
-                                        <div class="card border-0 tab-pane fade show active p-4 rounded shadow" id="bankDeposit" role="tabpanel" aria-labelledby="bankDeposit">
+                                        <div class="card border-0 tab-pane fade show active p-4 rounded shadow"  role="tabpanel" aria-labelledby="bankDeposit">
                                             <div class="card rounded shadow p-4 border-0">
                                                 <h4 class="mb-3">Bank Deposit</h4>
-                                                <form class="needs-validation"  novalidate>
+                                                <form class="needs-validation" id="bankDeposit" novalidate>
                                                     <div class="row g-3">
                                                         <div class="col-12">
                                                             <label for="withBankAmount" class="form-label">Deposit Amount</label>
                                                             <div class="input-group has-validation">
                                                                 <span class="input-group-text bg-light text-muted border">€</span>
                                                                 <input type="text" class="form-control" id="cryptoDepAmount" placeholder="withBankAmount" required>
-                                                                <div class="invalid-feedback"> Your username is required. </div>
+                                                                <div class="invalid-feedback"> Deposit is required. </div>
                                                             </div>
                                                         </div>
             

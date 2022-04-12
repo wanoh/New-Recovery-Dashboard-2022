@@ -122,7 +122,7 @@
             <!-- sidebar-wrapper -->
 
             <!-- Start Page Content -->
-            <main class="page-content bg-light">
+            <main class="page-content bg-light" id="crupto-withdrawal-page">
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between">
                         <div class="d-flex align-items-center">
@@ -288,14 +288,14 @@
                             <div class="col-md-7 col-lg-8 mt-4">
                                 <div class="card rounded shadow p-4 border-0">
                                     <h4 class="mb-3">Crypto Transfer</h4>
-                                    <form class="needs-validation" id="cryptoWithdrawalForm" novalidate>
+                                    <form  id="cryptoWithdrawalForm" >
                                         <div class="row g-3">
                                             <div class="col-12">
                                                 <label for="withBankAmount" class="form-label">Withdrawal Amount</label>
                                                 <div class="input-group has-validation">
                                                     <span class="input-group-text bg-light text-muted border">€</span>
                                                     <input type="text" class="form-control" id="cryptoWithAmount" placeholder="Withdrawal Amount" required>
-                                                    <div class="invalid-feedback"> Withdrw Amount is required. </div>
+                                                    <div class="invalid-feedback"> Withdraw Amount is required. </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -303,7 +303,7 @@
                                                 <input type="text" class="form-control" id="cryptoWithWalletAddress" placeholder="Enter Receiving Wallet Address"
                                                     required>
                                                 <div class="invalid-feedback">
-                                                    Please enter your shipping address.
+                                                    Please enter your Crypto address.
                                                 </div>
                                             </div>
 
@@ -311,7 +311,7 @@
                                                 <label for="wallet-name" class="form-label">Wallet Name</label>
                                                 <input type="text" class="form-control" id="cryptoWithWalletName" placeholder="Wallet Name" required>
                                                 <div class="invalid-feedback">
-                                                    Swift code required.
+                                                    Enter Valid Wallet Name.
                                                 </div>
                                             </div> 
         
@@ -323,9 +323,10 @@
                                                     <option>Binance Smart Chain(BEP20)</option>
                                                     <option>Ethereum (ERC20)</option>
                                                     <option>Solana</option>
-                                                    <option>Tron</option>                                                </select>
+                                                    <option>Tron</option>                                                
+                                                </select>
                                                 <div class="invalid-feedback">
-                                                    Please select a valid country.
+                                                    Please select a valid network.
                                                 </div>
                                             </div>
 
@@ -420,6 +421,45 @@
             </div>
         </div>
         <!-- Offcanvas End -->
+
+                        <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+
+
+
+
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+            // Your web app's Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCV2zCa47JimWQTnCXzPbO5XzGvB1K6SnI",
+                    authDomain: "recovery-new-office.firebaseapp.com",
+                    databaseURL: "https://recovery-new-office-default-rtdb.firebaseio.com",
+                    projectId: "recovery-new-office",
+                    storageBucket: "recovery-new-office.appspot.com",
+                    messagingSenderId: "500692325150",
+                    appId: "1:500692325150:web:1c291a884626ee63c56f0f"
+                    };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+                // make auth and firestore refrences
+        
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+                const storage = firebase.storage();
+
+            
+        </script>
+
         
         <!-- javascript -->
         <!--firebase And data script-->
